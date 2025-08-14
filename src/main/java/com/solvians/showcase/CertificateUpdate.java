@@ -1,7 +1,9 @@
 package com.solvians.showcase;
 
-public class CertificateUpdate {
+import java.text.DecimalFormat;
+import java.util.concurrent.Callable;
 
+public class CertificateUpdate implements Callable<String> {
     private final long timestamp;
     private final String isin;
     private final double bidPrice;
@@ -18,11 +20,17 @@ public class CertificateUpdate {
         this.askSize = askSize;
     }
 
-    public long getTimestamp() { return timestamp; }
+    @Override
+    public String call() {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return String.format("%d,%s,%s,%d,%s,%d",
+                timestamp, isin, df.format(bidPrice), bidSize, df.format(askPrice), askSize);
+    }
+
+   /* public long getTimestamp() { return timestamp; }
     public String getIsin() { return isin; }
     public double getBidPrice() { return bidPrice; }
     public int getBidSize() { return bidSize; }
     public double getAskPrice() { return askPrice; }
-    public int getAskSize() { return askSize; }
-
+    public int getAskSize() { return askSize; }*/
 }
