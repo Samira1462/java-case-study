@@ -10,8 +10,8 @@ public class ISINCreator {
     }
 
     public String generate() {
-        String body = bodyGenerator.generateBody();
-        int check = calculator.calculate(body);
+        var body = bodyGenerator.generateBody();
+        var check = calculator.calculate(body);
         return body + check;
     }
 }

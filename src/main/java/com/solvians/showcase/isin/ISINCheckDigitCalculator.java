@@ -20,7 +20,7 @@ public class ISINCheckDigitCalculator implements CheckDigitCalculator {
     }
 
     private int calculateCheckDigit(int sum) {
-        int modulo = sum % 10;
+        var modulo = sum % 10;
         return (modulo == 0) ? 0 : (10 - modulo);
     }
 }

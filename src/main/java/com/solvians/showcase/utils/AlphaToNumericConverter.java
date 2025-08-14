@@ -19,7 +19,7 @@ public final class AlphaToNumericConverter {
 
     public static String convert(char c) {
         if (Character.isLetter(c)) {
-            Integer val = MAP.get(Character.toUpperCase(c));
+            var val = MAP.get(Character.toUpperCase(c));
             if (val == null) throw new IllegalArgumentException("Unsupported letter: " + c);
             return Integer.toString(val);
         }

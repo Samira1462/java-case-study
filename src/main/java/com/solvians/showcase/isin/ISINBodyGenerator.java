@@ -11,16 +11,16 @@ public class ISINBodyGenerator {
         ThreadLocalRandom random = ThreadLocalRandom.current();
 
         for (int i = 0; i < LETTER_COUNT; i++) {
-            char c = (char) ('A' + random.nextInt(26));
+            var c = (char) ('A' + random.nextInt(26));
             sb.append(c);
         }
 
         for (int i = 0; i < ALPHANUMERIC_COUNT; i++) {
             if (random.nextBoolean()) {
-                char c = (char) ('A' + random.nextInt(26));
+                var c = (char) ('A' + random.nextInt(26));
                 sb.append(c);
             } else {
-                char d = (char) ('0' + random.nextInt(10));
+                var d = (char) ('0' + random.nextInt(10));
                 sb.append(d);
             }
         }

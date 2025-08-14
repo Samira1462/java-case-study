@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class CertificateUpdateGeneratorTest {
 
-    @Test
+   @Test
     public void generateQuotes() {
         CertificateUpdateGenerator certificateUpdateGenerator = new CertificateUpdateGenerator(10, 100);
         Stream<CertificateUpdate> quotes = certificateUpdateGenerator.generateQuotes();
