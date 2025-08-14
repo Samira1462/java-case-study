@@ -27,7 +27,7 @@ class ISINCheckDigitCalculatorTest {
             "D1123456789",
             "12345678901"
     })
-    void givenISINStartingWithInvalidChars_thenThrows(String isin) {
+    void givenISINStartingWithInvalidCharsThenThrows(String isin) {
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
                 () -> calculator.calculate(isin));
         assertTrue(ex.getMessage().contains("two letters"));
