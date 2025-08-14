@@ -1,4 +1,4 @@
-# Solvians Java Case Study
+# Java Case Study
 
 ## Introduction – Feed Generator
 
