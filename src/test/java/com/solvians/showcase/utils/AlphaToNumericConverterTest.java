@@ -1,32 +1,33 @@
 package com.solvians.showcase.utils;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AlphaToNumericConverterTest {
 
-    @Test
-    void convertsUpperCaseLetter() {
-        assertEquals("10", AlphaToNumericConverter.convert('A'));
-        assertEquals("35", AlphaToNumericConverter.convert('Z'));
+    @ParameterizedTest(name = "convert({0}) = {1}")
+    @CsvSource({
+            "A,10",
+            "Z,35",
+            "a,10",
+            "z,35",
+            "0,0",
+            "9,9"
+    })
+    void convertsLettersAndDigits(char input, String expected) {
+        assertEquals(expected, AlphaToNumericConverter.convert(input));
     }
 
-    @Test
-    void convertsLowerCaseLetter() {
-        assertEquals("10", AlphaToNumericConverter.convert('a'));
-        assertEquals("35", AlphaToNumericConverter.convert('z'));
-    }
-
-    @Test
-    void throwsExceptionForUnsupportedLetter() {
-        assertThrows(IllegalArgumentException.class, () -> AlphaToNumericConverter.convert('#'));
-    }
-
-    @Test
-    void returnsDigitAsString() {
-        assertEquals("0", AlphaToNumericConverter.convert('0'));
-        assertEquals("9", AlphaToNumericConverter.convert('9'));
+    @ParameterizedTest(name = "convert({0}) throws IllegalArgumentException")
+    @CsvSource({
+            "#",
+            "@",
+            "!"
+    })
+    void throwsExceptionForUnsupportedChars(char input) {
+        assertThrows(IllegalArgumentException.class, () -> AlphaToNumericConverter.convert(input));
     }
 
 }
